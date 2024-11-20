@@ -1,0 +1,490 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;zh-TW&quot;,&quot;zh-HK&quot;,&quot;ja&quot;,&quot;ko&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软件测试 | Ainiovo</title><meta name="author" content="平安是福"><meta name="copyright" content="平安是福"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="软件测试seleniumselenium八大元素选择器？  元素属性id值 链接link text文本定位 by_xpath 基于页面结构定位 partial linl text：link text的模糊查询版本 tag_name class_name css_selector   软件测试测试用例的设计方法有哪些?  等价类划分法 边界值分析法 错误推测法 判断表法 因果图法 场景法 正交实验法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件测试">
+<meta property="og:url" content="https://ainiovo.github.io/2024/11/20/java%E9%9D%A2%E8%AF%95/index.html">
+<meta property="og:site_name" content="Ainiovo">
+<meta property="og:description" content="软件测试seleniumselenium八大元素选择器？  元素属性id值 链接link text文本定位 by_xpath 基于页面结构定位 partial linl text：link text的模糊查询版本 tag_name class_name css_selector   软件测试测试用例的设计方法有哪些?  等价类划分法 边界值分析法 错误推测法 判断表法 因果图法 场景法 正交实验法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ainiovo.github.io/img/tx.png">
+<meta property="article:published_time" content="2024-11-19T16:35:43.165Z">
+<meta property="article:modified_time" content="2024-11-17T04:13:36.819Z">
+<meta property="article:author" content="平安是福">
+<meta property="article:tag" content="软件测试">
+<meta property="article:tag" content="自动化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ainiovo.github.io/img/tx.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://ainiovo.github.io/2024/11/20/java%E9%9D%A2%E8%AF%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.2.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软件测试',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/tx.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-search"></i><span> 搜索</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 集合</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movie/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/language/"><i class="fa-fw fa-fw fas fa-language"></i><span> 语言</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">Ainiovo</span></a><a class="nav-page-title" href="/"><span class="site-name">软件测试</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-search"></i><span> 搜索</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 集合</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movie/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/language/"><i class="fa-fw fa-fw fas fa-language"></i><span> 语言</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">软件测试</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-19T16:35:43.165Z" title="发表于 2024-11-20 00:35:43">2024-11-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-17T04:13:36.819Z" title="更新于 2024-11-17 12:13:36">2024-11-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h1><h2 id="selenium"><a href="#selenium" class="headerlink" title="selenium"></a>selenium</h2><h3 id="selenium八大元素选择器？"><a href="#selenium八大元素选择器？" class="headerlink" title="selenium八大元素选择器？"></a>selenium八大元素选择器？</h3><blockquote>
+<ol>
+<li>元素属性id值</li>
+<li>链接link text文本定位</li>
+<li>by_xpath 基于页面结构定位</li>
+<li>partial linl text：link text的模糊查询版本</li>
+<li>tag_name</li>
+<li>class_name</li>
+<li>css_selector</li>
+</ol>
+</blockquote>
+<h2 id="软件测试-1"><a href="#软件测试-1" class="headerlink" title="软件测试"></a>软件测试</h2><h3 id="测试用例的设计方法有哪些"><a href="#测试用例的设计方法有哪些" class="headerlink" title="测试用例的设计方法有哪些?"></a>测试用例的设计方法有哪些?</h3><blockquote>
+<ol>
+<li>等价类划分法</li>
+<li>边界值分析法</li>
+<li>错误推测法</li>
+<li>判断表法</li>
+<li>因果图法</li>
+<li>场景法</li>
+<li>正交实验法</li>
+</ol>
+</blockquote>
+<h3 id="缺陷的定义是什么？-什么时软件缺陷-bug？"><a href="#缺陷的定义是什么？-什么时软件缺陷-bug？" class="headerlink" title="缺陷的定义是什么？(什么时软件缺陷&#x2F;bug？)"></a>缺陷的定义是什么？(什么时软件缺陷&#x2F;bug？)</h3><blockquote>
+<ol>
+<li>软件未实现产品说明书要求的功能。</li>
+<li>软件实现了产品说明书未提到的功能。</li>
+<li>软件未实现产品说明书虽未明确提及，但3应实现的目标。</li>
+<li>软件实现了产品说明书中指名不该出现的功能。</li>
+<li>难以理解、不易使用、运行缓慢或者(从测试的角度来说)最终用户不满意。</li>
+</ol>
+</blockquote>
+<h3 id="什么是软件测试？-软件测试的定义"><a href="#什么是软件测试？-软件测试的定义" class="headerlink" title="什么是软件测试？(软件测试的定义)"></a>什么是软件测试？(软件测试的定义)</h3><blockquote>
+<ol>
+<li>正向：相信产品能够达到预期结果的测试过程。</li>
+<li>反向：测试目的是为了发现软件的错误而执行一个程序的过程。</li>
+<li>IEEE：在规定条件下运行系统或构件的过程：观察和记录结果，并给出相应评价；分析软件项目的过程：检查现有状况和所需状况之间的不同，并评估项目特性。</li>
+</ol>
+</blockquote>
+<h3 id="软件测试的目的是什么"><a href="#软件测试的目的是什么" class="headerlink" title="软件测试的目的是什么?"></a>软件测试的目的是什么?</h3><blockquote>
+<ol>
+<li>直接目的：找到bug，并保证bug被修复。</li>
+<li>长远目标：测试数据，对测试和开发过程进行改进，避免重复犯错。</li>
+</ol>
+</blockquote>
+<h3 id="测试与调试的区别？"><a href="#测试与调试的区别？" class="headerlink" title="测试与调试的区别？"></a>测试与调试的区别？</h3><blockquote>
+<ol>
+<li>主体不同，测试为测试人员，调试为开发人员。</li>
+<li>方法不同，测试使用等价类划分法、边界值法等，调试使用逻辑代码和算法。</li>
+<li>思路不同，测试为反向思维，调试为正向思维。</li>
+<li>测试目的明确，结果预知，过程定义好，调试结果未知，所花时间不确定。</li>
+</ol>
+</blockquote>
+<h3 id="说出因果图法的优缺点"><a href="#说出因果图法的优缺点" class="headerlink" title="说出因果图法的优缺点?"></a>说出因果图法的优缺点?</h3><blockquote>
+<ul>
+<li>优点：能发现需求或者设计中的不足之处。</li>
+<li>缺点：当原因和结果很多的时候，因果关系连线就会很多，导致可读性变差，因此只适合局部的小功能。</li>
+</ul>
+</blockquote>
+<h3 id="你发现bug，但开发认为不是bug你该怎么办？"><a href="#你发现bug，但开发认为不是bug你该怎么办？" class="headerlink" title="你发现bug，但开发认为不是bug你该怎么办？"></a>你发现bug，但开发认为不是bug你该怎么办？</h3><blockquote>
+<ol>
+<li>将问题提交到缺陷管理库里面进行备案；</li>
+<li>反复确认bug，保证发现的确实是一个bug；</li>
+<li>是否是自己对bug描述不正确；</li>
+<li>如果前面都没问题，那么既然开发人员认为不是bug，又确实存在问题，我会找出需求文档，并且对着文档和开发当面进行沟通，说出我认为是BUG的原因；如果开发接受我的说法，那就需要开发进行BUG修改；如果开发仍然觉得不是一个BUG，这个时候需要产品经理介入。针对此问题，进行讨论。如果产品觉得是BUG，一般情况是需要修复的。如果产品经理觉得问题不大，那这个BUG就可以不解决。</li>
+</ol>
+</blockquote>
+<h3 id="测试用例包括哪些东西？"><a href="#测试用例包括哪些东西？" class="headerlink" title="测试用例包括哪些东西？"></a>测试用例包括哪些东西？</h3><h3 id="给你一个需求怎么展开测试工作？"><a href="#给你一个需求怎么展开测试工作？" class="headerlink" title="给你一个需求怎么展开测试工作？"></a>给你一个需求怎么展开测试工作？</h3><h3 id="测试用例的八大要素是？"><a href="#测试用例的八大要素是？" class="headerlink" title="测试用例的八大要素是？"></a>测试用例的八大要素是？</h3><h3 id="三大等待"><a href="#三大等待" class="headerlink" title="三大等待"></a>三大等待</h3><blockquote>
+<ol>
+<li>隐式等待</li>
+<li>显示等待</li>
+<li>强制等待</li>
+</ol>
+</blockquote>
+<h3 id="关键字驱动原理"><a href="#关键字驱动原理" class="headerlink" title="关键字驱动原理"></a>关键字驱动原理</h3><blockquote>
+<p>封装成一个工具类，提供操作浏览器的api，易于管理和维护，及提高代码的复用性。</p>
+</blockquote>
+<h3 id="怎么部署测试环境"><a href="#怎么部署测试环境" class="headerlink" title="怎么部署测试环境?"></a>怎么部署测试环境?</h3><blockquote>
+<ol>
+<li>如果是项目第一次部署，了解软件运行的最低要求及用户配置，如硬件，网络，系统等，模拟出用户真实使用环境。</li>
+<li>如果是项目第一次部署，就根据该软件项目的技术选型，检查服务器上软件运行所需的软件环境（比如jdk，数据库，服务器，git等）和本地测试工具是否齐全，如果有就检查版本是否符合要求，没有就下载安装配置。</li>
+<li>执行脚本，做好测试数据准备。</li>
+<li>搭好测试环境后，对操作系统及测试环境进行备份，避免在测试环境遭到破坏时，造成数据丢失，出现不可预知的问题。</li>
+</ol>
+</blockquote>
+<h2 id="Fiddler"><a href="#Fiddler" class="headerlink" title="Fiddler"></a>Fiddler</h2><h3 id="为什么要使用fiddler抓包？-软件测试时为什么需要抓包"><a href="#为什么要使用fiddler抓包？-软件测试时为什么需要抓包" class="headerlink" title="为什么要使用fiddler抓包？(软件测试时为什么需要抓包?)"></a>为什么要使用fiddler抓包？(软件测试时为什么需要抓包?)</h3><blockquote>
+<ol>
+<li>功能测试时，通过抓包查看隐藏字段，web表单中会有很多隐藏字段，可以收集用户数据，预防CRSF攻击，防网络爬虫等。</li>
+<li>了解协议内容，方便展开接口测试和性能测试。性能测试方时，需要大量模拟用户请求，所以必须知道请求中的协议内容和特点，可以用来分析协议。接口测试方面，在接口文档没有或者不全的时候，用来进行辅助测试。</li>
+<li>检查数据加密安全测试时，需要通过抓包检查敏感数据在传输过程中是否加密。</li>
+<li>用来处理前后端bug之争。</li>
+<li>通过抓包分析，更好的理解整个系统。比如数据传输过程中前后端的关系以及整个系统的结构。</li>
+</ol>
+</blockquote>
+<h2 id="HTTP-TCP-IP"><a href="#HTTP-TCP-IP" class="headerlink" title="HTTP&amp;TCP&#x2F;IP"></a>HTTP&amp;TCP&#x2F;IP</h2><h3 id="http协议有哪些成分？各成分之间包含哪些东西？"><a href="#http协议有哪些成分？各成分之间包含哪些东西？" class="headerlink" title="http协议有哪些成分？各成分之间包含哪些东西？"></a>http协议有哪些成分？各成分之间包含哪些东西？</h3><blockquote>
+<p>http协议包含请求和响应。</p>
+<ol>
+<li>请求：<ul>
+<li>请求行</li>
+<li>请求头</li>
+<li>空行</li>
+<li>请求体</li>
+</ul>
+</li>
+<li>响应：<ul>
+<li>响应行</li>
+<li>响应头</li>
+<li>空行</li>
+<li>响应体</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="请求，响应行头体分别包含哪些内容？"><a href="#请求，响应行头体分别包含哪些内容？" class="headerlink" title="请求，响应行头体分别包含哪些内容？"></a>请求，响应行头体分别包含哪些内容？</h3><blockquote>
+<ol>
+<li>请求行：<ul>
+<li>get&#x2F;post等：请求方法</li>
+<li>Host：请求的主机名</li>
+<li>Connection：</li>
+<li>Sec-ch-ua：</li>
+<li>Accept：客户端可识别的内容列表</li>
+<li>sec-ch-ua-mobile:</li>
+<li>User-Agent：产生请求浏览器类型</li>
+<li>Sec-Fetch-Site：</li>
+<li>Sec-Fetch-Mode：</li>
+<li>Sec-Fetch-Dest：</li>
+<li>Referer：</li>
+<li>Accept-Ecoding：</li>
+<li>Accept-Language：</li>
+<li>Cookie：</li>
+<li>Content-Type：请求体的格式类型</li>
+</ul>
+</li>
+<li>请求头</li>
+</ol>
+</blockquote>
+<h3 id="Http与Https的异同点？"><a href="#Http与Https的异同点？" class="headerlink" title="Http与Https的异同点？"></a>Http与Https的异同点？</h3><blockquote>
+<p>异同点：</p>
+<ol>
+<li>Http是超文本传输协议为明文传输，而Https为超文本传输完全协议，利用SLL&#x2F;TLS加密数据包，提供了对网站服务器的身份验证，保护了减缓资料的隐私性和完整性。可视为http的升级版，更安全；</li>
+<li>端口不同：http默认端口为80，而https是443；</li>
+<li>连接方式不同：http是无连接、无状态的，而https是如SSL+HTTP构建的可进行加密传输、身份认证的网络协议，因而http相对更简单快速，https对技术门槛要求较高，会加重服务端负担；</li>
+<li>证书申请方式不同：http：免费申请；https需要到ca申请证书，需缴费。</li>
+</ol>
+</blockquote>
+<h3 id="http请求方法有哪些？"><a href="#http请求方法有哪些？" class="headerlink" title="http请求方法有哪些？"></a>http请求方法有哪些？</h3><blockquote>
+<ol>
+<li>GET    请求指定的页面信息，并返回实体主体。通常获取某个指定页面内容</li>
+<li>HEAD    类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头</li>
+<li>POST    向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和&#x2F;或已有资源的修改。</li>
+<li>PUT    从客户端向服务器传送的数据取代指定的文档的内容。通常用于修改指定页面的内容。</li>
+<li>DELETE    请求服务器删除指定的页面。</li>
+<li>CONNECT    HTTP&#x2F;1.1 协议中预留给能够将连接改为管道方式的代理服务器。</li>
+<li>OPTIONS    允许客户端查看服务器的性能。</li>
+<li>TRACE    回显服务器收到的请求，主要用于测试或诊断。</li>
+<li>PATCH    是对 PUT 方法的补充，用来对已知资源进行局部更新 。</li>
+</ol>
+</blockquote>
+<h3 id="get-post方法的区别？"><a href="#get-post方法的区别？" class="headerlink" title="get&amp;post方法的区别？"></a>get&amp;post方法的区别？</h3><blockquote>
+<ol>
+<li>get在浏览器回退时是无效的，而post会再次提交请求；</li>
+<li>get产生的url可以被BookMark，post不可以；</li>
+<li>get请求会被浏览器主动cache，pot不会，除非手动设置；</li>
+<li>get请求只能进行url编码，post支持多种编码方式；</li>
+<li>get请求参数会完整保留在浏览器历史记录里，post不会被保留；</li>
+<li>get请求在url中传送的参数有大小限制，post没有；</li>
+<li>get对参数的数据类型有限制，只接受ASCII字符，post没有；</li>
+<li>get比post更不安全，参数直接暴露在url上，不能用来传递敏感信息；</li>
+<li>get参数通过url传递，post放在Request body中；</li>
+</ol>
+</blockquote>
+<h3 id="Session、Cookie和Token的区别"><a href="#Session、Cookie和Token的区别" class="headerlink" title="Session、Cookie和Token的区别"></a>Session、Cookie和Token的区别</h3><blockquote>
+<ol>
+<li>三者都是由服务器产生的;</li>
+<li>cookie保存在客户端通常指浏览器、session保存在服务器端、token相当于一个令牌。</li>
+<li>cookie数据存放在客户端浏览器上，session数据存放在服务器上、token在客户端一般存放在localStorage，cookie或sessionStorage中，在服务器端一般存放在数据库中；</li>
+<li>session通过set-cookie字段将sessionId返回给客户端，下次请求时只要带上sessionId就能保持连接；</li>
+<li>cookie没有session安全，可以通过分析本地存放的cookie并进行cookie欺骗；</li>
+<li>大小不一致：单个cookie保存的数据不能超过4K，很多浏览器限制一个站点最多保存20哥cookie。而且编码也有限制；session则没有这些限制；</li>
+<li>由于session保存在服务器上，当访问增多时，会比较占用服务器性能；</li>
+<li>token完全由应用程序进行管理，所以它能避开同源策略，可以避免CSRF（跨站请求访问）攻击；可以是无状态的，可以在多个服务器之间共享；可以减轻服务器压力，减少频繁的查询数据库。</li>
+</ol>
+</blockquote>
+<h3 id="OSI-RM七层协议有哪些？TCP-IP协议有哪些？"><a href="#OSI-RM七层协议有哪些？TCP-IP协议有哪些？" class="headerlink" title="OSI&#x2F;RM七层协议有哪些？TCP&#x2F;IP协议有哪些？"></a>OSI&#x2F;RM七层协议有哪些？TCP&#x2F;IP协议有哪些？</h3><blockquote>
+<ul>
+<li>OSI&#x2F;RM:<ol>
+<li>物理层：定义一些电器，机械，过程和规范，集线器</li>
+<li>数据链路层：提供介质访问和链路管理</li>
+<li>网络层：IP选址及路由寻址。选择最佳路径传输，路由数据包；</li>
+<li>传输层：建立、管理和维护端到端的连接。提供可靠和尽力而为的传输；</li>
+<li>会话层：建立、管理和维护会话</li>
+<li>表示层：数据格式转化、数据的加密</li>
+<li>应用层：为应用程序提供服务。控制应用程序</li>
+</ol>
+</li>
+<li>TCP&#x2F;IP：<ol>
+<li>网络接口层</li>
+<li>网络互联层</li>
+<li>传输层</li>
+<li>应用层</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<h3 id="TCP三次握手四次挥手的全过程"><a href="#TCP三次握手四次挥手的全过程" class="headerlink" title="TCP三次握手四次挥手的全过程"></a>TCP三次握手四次挥手的全过程</h3><blockquote>
+<p>三次握手：</p>
+<ol>
+<li>客户端浏览器想服务器发送SYN位码，请求服务器建立连接；</li>
+<li>服务器接收到SYN位码后，向客户端发送一个SYN+ACK位码，让客户端表示连接并确认；</li>
+<li>客户端收到SYN+ACK位码后，在给服务器端发送一个ACK位码，确认建立连接。</li>
+</ol>
+<p>四次挥手：</p>
+<ol>
+<li>客户端浏览器向服务器发送FIN+ACK位码，告诉服务器数据传输完毕，请求断开连接，并等待服务器确认；</li>
+<li>服务器接收到位码后，发送一个ACK位码给客户端表示已受到确认；</li>
+<li>服务器继续发送FIN位码给客户端，表示我的数据也传输完了，你可以断开连接了；</li>
+<li>客户端浏览器收到服务器发送的FIN位码后，向服务器发送一个ACK位码，确认断开连接。</li>
+</ol>
+</blockquote>
+<h3 id="输入一串网址，接下来会发生什么事情？"><a href="#输入一串网址，接下来会发生什么事情？" class="headerlink" title="输入一串网址，接下来会发生什么事情？"></a>输入一串网址，接下来会发生什么事情？</h3><blockquote>
+<p>一、Http请求</p>
+<ol>
+<li><p>域名解析：浏览器拿到url后 对url解析，将域名与实际的文件路径分离开，通过DNS解析得到该域名的ip地址 ，这个过程中并不是每次都会发起DNS请求的，首先会从几个缓存里面进行找，找不到了才会发起DNS请求，三级缓存如下：询浏览器缓存（浏览器会缓存之前拿到的DNS 2-30分钟时间），如果没有找到，检查系统缓存，检查hosts文件，这个文件保存了一些以前访问过的网站的域名和IP的数据。它就像是一个本地的数据库。如果找到就可以直接获取目标主机的IP地址了。没有找到的，就需要发起DNS请求，检查路由器缓存，路由器有自己的DNS缓存，可能就包括了这在查询的内容；<br>DNS请求步骤：</p>
+<ul>
+<li>向本地DNS服务器发送请求，询问该域名的ip是啥？本地域名服务器收到客户端的请求后，如果缓存里的表格能找到，找到则直接返回该域名ip，反之则会去询问根域名服务器；</li>
+<li>根 DNS 收到来自本地 DNS 的请求后，发现后置是 .com，说这个域名归 .com区域管理”，我给你 .com 顶级域名服务器地址给你，你去问问它吧。”</li>
+<li>本地 DNS 收到顶级域名服务器的地址后，向.com 顶级域名服务器发起请求询问ip地址，顶级域名服务器返回该域名区域的权威DNS服务器地址；</li>
+<li>本地 DNS 于是转向问权威 DNS 服务器，权威 DNS 服务器查询后将对应的 IP 地址 告诉本地 DNS；</li>
+<li>本地 DNS 再将 IP 地址返回客户端，客户端和目标建立连接。</li>
+</ul>
+</li>
+<li><p>tcp三次握手：dns解析后拿到ip，浏览器会与IP对应的服务器进行tcp三次握手建立连接，构建出一个http请求：</p>
+<ul>
+<li>第一次握手：客户端想服务器发送一个请求(SKY&#x3D;1),等待服务器确认；</li>
+<li>第二次握手：服务器收到清求并确认，回复一个指令（SKY&#x3D;1，ACK&#x3D;1）;</li>
+<li>第三次握手：客户端收到服务器的回复指令并返回确认（ACK&#x3D;1)。</li>
+</ul>
+</li>
+<li><p>发送http请求：以 GET 为例，当需要发送 HTTP 请求的时候，同样也不是直接就发送了，需要先查询浏览器缓存。浏览器中的缓存分为强缓存和协商缓存，浏览器发起 HTTP 请求时首先会根据 http 头信息来判断是存有强缓存，以及其是否过期，如果有强缓存且未过期则命中，不会发送请求到服务器了。如果强缓存没命中，则会向服务器发起请求，这个请求的 Header 头中会带有浏览器最后一次请求该资源的时间和一个资源校验码(使用资源修改时间、资源大小等信息生成)，服务器收到这个请求后会判断协商缓存是否过期，如果过期则返回新的资源信息，如果没过期则返回 304 状态码，表示资源未更新，可以使用缓存中的资源。</p>
+</li>
+<li><p>TCP-网络层连接：HTTP 请求发出后会将数据包交给下层协议栈处理，在传输层和网络层该数据包会被分别加上 TCP 头和 IP 头，并且被发送出去，沿路的网关会收到这个数据包并进行识别和转发，直到该数据包被服务器收到，通过相同的流程返回回复数据包。</p>
+</li>
+<li><p>页面渲染：客户端拿到服务器端传输来的文件，找到HTML和MIME文件，通过MIME文件，浏览器知道要用页面渲染引擎来处理HTML文件。<br>二、Https请求<br>在发起请求是需要进行身份验证<br>三、无域名，直接写ip地址<br>不需要解析域名，可直接发起Http&#x2F;https请求<br>四、有无请求参数</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="常用的协议有哪些，端口号是？"><a href="#常用的协议有哪些，端口号是？" class="headerlink" title="常用的协议有哪些，端口号是？"></a>常用的协议有哪些，端口号是？</h3><blockquote>
+<ul>
+<li>TCP协议：<ol>
+<li>FTP——文件传输协议——21号端口</li>
+<li>Telnet——远程登陆协议——23号端口</li>
+<li>SMTP——简单邮件传送协议——25号端口</li>
+<li>POP3——接收邮件——110号端口</li>
+</ol>
+</li>
+<li>UDP协议：<ol>
+<li>HTTP——超文本传输协议——80号端口</li>
+<li>HTTPS——服务器，默认端口号为443</li>
+<li>DNS——域名解析服务——53号端口</li>
+<li>SNMP——简单网络管理协议——161号端口</li>
+<li>TFTP——简单文件传输的协议——69号端口</li>
+</ol>
+</li>
+<li>SSH（安全登录）、SCP（文件传输）、端口重定向，默认的端口号为22</li>
+<li>tomcat，默认的端口号为8080</li>
+<li>Oracle 数据库，默认的端口号为1521</li>
+<li>mysql 数据库，默认的端口号为3306</li>
+</ul>
+</blockquote>
+<h3 id="什么是路由寻址？"><a href="#什么是路由寻址？" class="headerlink" title="什么是路由寻址？"></a>什么是路由寻址？</h3><blockquote>
+<p>指从一个接口收到数据包，根据数据包的目的地址定向并转发到另一个接口的过程</p>
+</blockquote>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="Linux的目录结构有哪些？分别有什么作用？"><a href="#Linux的目录结构有哪些？分别有什么作用？" class="headerlink" title="Linux的目录结构有哪些？分别有什么作用？"></a>Linux的目录结构有哪些？分别有什么作用？</h3><blockquote>
+<p>答：根据FHS标准，Linux包含11个主要目录:<br>&#x2F;boot：系统启动目录，也是内核的存放地<br>&#x2F;etc：存放配置文件<br>&#x2F;tmp：存放临时文件<br>&#x2F;home：用户目录<br>&#x2F;lib：存放库文件和程序执行过程中会用到的额外函数库<br>&#x2F;bin：存放可执行文件和linux命令<br>&#x2F;sbin：存放系统管理员的命令和工具<br>&#x2F;usr：应用程序和文件的安装地<br>&#x2F;mnt：挂载其它文件系统<br>&#x2F;root：root账户的目录<br>&#x2F;dev：存放linux系统下的设备文件</p>
+</blockquote>
+<h3 id="linux怎么杀进程"><a href="#linux怎么杀进程" class="headerlink" title="linux怎么杀进程?"></a>linux怎么杀进程?</h3><blockquote>
+<ol>
+<li>首先使用ps -ef 进程名 查找其id号，然后使用kill &gt; -9 加查到的id号强制杀掉进程。</li>
+<li>在知道进程完整名称的情况下，使用killall 进程名杀掉所有同名的进程</li>
+<li>使用pkill 进程名杀掉所有同名进程，通常用来杀掉某一个用户的所有进程。</li>
+</ol>
+</blockquote>
+<h3 id="Linux怎么查日志"><a href="#Linux怎么查日志" class="headerlink" title="Linux怎么查日志?"></a>Linux怎么查日志?</h3><blockquote>
+<p>通常使用tail 命令查看日志</p>
+</blockquote>
+<h3 id="Linux怎么解压压缩文件"><a href="#Linux怎么解压压缩文件" class="headerlink" title="Linux怎么解压压缩文件?"></a>Linux怎么解压压缩文件?</h3><blockquote>
+<p>linux环境下通常tar.gz或tar格式的，使用tar -zxvf 文件名解压 tar -zcvf 文件名压缩<br>某些情况需要解压来自windos系统的zip文件时，unzip 文件名解压，unzip -r 文件名压缩</p>
+</blockquote>
+<h3 id="Linux怎么修改文件权限"><a href="#Linux怎么修改文件权限" class="headerlink" title="Linux怎么修改文件权限?"></a>Linux怎么修改文件权限?</h3><blockquote>
+<p>linux系统中,文件权有rwx（读写和执行），文件权限设定为10位数，第一位代表文件类型，其后每三位分别代表这ugo（文件所有者、同组成员和其他人）的rwx（读写执行）权限。可以使用chmod命令修改，对ugo三者增减rwx（读写执行）权限。为了简化操作，把rwx分别用3为数的二进制表示1表示真0表示假及100，010，001，对应十进制的4，2，1。因此要修改某一用户的权限，首先判断该用户与ugo的关系，之间对ugo进行赋值即可。比如要修改操作文件权限的用户和文件所有者同组，修改为可读可写可执行及4+2+1&#x3D;7，其它两位数不变，中间变为7即可。</p>
+</blockquote>
+<h3 id="如何查找文件"><a href="#如何查找文件" class="headerlink" title="如何查找文件"></a>如何查找文件</h3><blockquote>
+<p>答：linux中查找文件有多种方法，如：</p>
+<ol>
+<li>使用find命令在指定目录下查找，可以使用*模糊匹配：find path -name file</li>
+<li>使用which命令从环境变量文件（&#x2F;etc&#x2F;profile）中的path目录中查找，且which找的都是可执行文件，不能使用*模糊匹配： which filename</li>
+<li>使用locate以一个数据库文件为基础查找，linux系统每天至少自动扫描一次文件，将结果保存到数据库，locate查的是数据库记录。locate查询比find要快，但最新文件如果在数据库中没有记录，会查询不到，次是需要手动更新（updatedb）：locate filename</li>
+<li>使用whereis查询可执行文件，比which查询更多，会查找出相关的man文件：whereis filename</li>
+</ol>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ainiovo.github.io">平安是福</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ainiovo.github.io/2024/11/20/java%E9%9D%A2%E8%AF%95/">https://ainiovo.github.io/2024/11/20/java%E9%9D%A2%E8%AF%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://ainiovo.github.io" target="_blank">Ainiovo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a><a class="post-meta__tags" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a></div><div class="post-share"><div class="social-share" data-image="/img/tx.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/11/20/linux/" title="Linux"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Linux</div></div><div class="info-2"><div class="info-item-1">Linux开源(OpenSource)开源软件之父：理查德·斯托曼 发展史创始人linus benedict torvalds，1969年。1991年发明linux内核。 发行版 Red Hat Enterprise linux（红帽linux商业公司） Community Enterprise OPerating System(CentOS...</div></div></div></a><a class="pagination-related" href="/2024/11/20/%E8%AF%95%E9%A2%98/" title="面试题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">面试题</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/tx.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">平安是福</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/ainiovo" target="_blank" title="Github"><i class="fab fa-github" style="color: #0f1135d6;"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #0f1135d6;"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #0f1135d6;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">有朋自远方来，不亦说乎！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="toc-number">1.</span> <span class="toc-text">软件测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#selenium"><span class="toc-number">1.1.</span> <span class="toc-text">selenium</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#selenium%E5%85%AB%E5%A4%A7%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">selenium八大元素选择器？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95-1"><span class="toc-number">1.2.</span> <span class="toc-text">软件测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">1.2.1.</span> <span class="toc-text">测试用例的设计方法有哪些?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E9%99%B7%E7%9A%84%E5%AE%9A%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F-%E4%BB%80%E4%B9%88%E6%97%B6%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7-bug%EF%BC%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text">缺陷的定义是什么？(什么时软件缺陷&#x2F;bug？)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%EF%BC%9F-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">什么是软件测试？(软件测试的定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%9A%84%E7%9B%AE%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.2.4.</span> <span class="toc-text">软件测试的目的是什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E4%B8%8E%E8%B0%83%E8%AF%95%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.2.5.</span> <span class="toc-text">测试与调试的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E5%87%BA%E5%9B%A0%E6%9E%9C%E5%9B%BE%E6%B3%95%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.2.6.</span> <span class="toc-text">说出因果图法的优缺点?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E5%8F%91%E7%8E%B0bug%EF%BC%8C%E4%BD%86%E5%BC%80%E5%8F%91%E8%AE%A4%E4%B8%BA%E4%B8%8D%E6%98%AFbug%E4%BD%A0%E8%AF%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">1.2.7.</span> <span class="toc-text">你发现bug，但开发认为不是bug你该怎么办？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%8C%85%E6%8B%AC%E5%93%AA%E4%BA%9B%E4%B8%9C%E8%A5%BF%EF%BC%9F"><span class="toc-number">1.2.8.</span> <span class="toc-text">测试用例包括哪些东西？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E4%BD%A0%E4%B8%80%E4%B8%AA%E9%9C%80%E6%B1%82%E6%80%8E%E4%B9%88%E5%B1%95%E5%BC%80%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="toc-number">1.2.9.</span> <span class="toc-text">给你一个需求怎么展开测试工作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E5%85%AB%E5%A4%A7%E8%A6%81%E7%B4%A0%E6%98%AF%EF%BC%9F"><span class="toc-number">1.2.10.</span> <span class="toc-text">测试用例的八大要素是？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%A4%A7%E7%AD%89%E5%BE%85"><span class="toc-number">1.2.11.</span> <span class="toc-text">三大等待</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E9%A9%B1%E5%8A%A8%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.12.</span> <span class="toc-text">关键字驱动原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E9%83%A8%E7%BD%B2%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.13.</span> <span class="toc-text">怎么部署测试环境?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fiddler"><span class="toc-number">1.3.</span> <span class="toc-text">Fiddler</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8fiddler%E6%8A%93%E5%8C%85%EF%BC%9F-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%97%B6%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%8A%93%E5%8C%85"><span class="toc-number">1.3.1.</span> <span class="toc-text">为什么要使用fiddler抓包？(软件测试时为什么需要抓包?)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-TCP-IP"><span class="toc-number">1.4.</span> <span class="toc-text">HTTP&amp;TCP&#x2F;IP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E5%8D%8F%E8%AE%AE%E6%9C%89%E5%93%AA%E4%BA%9B%E6%88%90%E5%88%86%EF%BC%9F%E5%90%84%E6%88%90%E5%88%86%E4%B9%8B%E9%97%B4%E5%8C%85%E5%90%AB%E5%93%AA%E4%BA%9B%E4%B8%9C%E8%A5%BF%EF%BC%9F"><span class="toc-number">1.4.1.</span> <span class="toc-text">http协议有哪些成分？各成分之间包含哪些东西？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%EF%BC%8C%E5%93%8D%E5%BA%94%E8%A1%8C%E5%A4%B4%E4%BD%93%E5%88%86%E5%88%AB%E5%8C%85%E5%90%AB%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%EF%BC%9F"><span class="toc-number">1.4.2.</span> <span class="toc-text">请求，响应行头体分别包含哪些内容？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Http%E4%B8%8EHttps%E7%9A%84%E5%BC%82%E5%90%8C%E7%82%B9%EF%BC%9F"><span class="toc-number">1.4.3.</span> <span class="toc-text">Http与Https的异同点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">1.4.4.</span> <span class="toc-text">http请求方法有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-post%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.4.5.</span> <span class="toc-text">get&amp;post方法的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Session%E3%80%81Cookie%E5%92%8CToken%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.6.</span> <span class="toc-text">Session、Cookie和Token的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI-RM%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9FTCP-IP%E5%8D%8F%E8%AE%AE%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">1.4.7.</span> <span class="toc-text">OSI&#x2F;RM七层协议有哪些？TCP&#x2F;IP协议有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">1.4.8.</span> <span class="toc-text">TCP三次握手四次挥手的全过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E4%B8%80%E4%B8%B2%E7%BD%91%E5%9D%80%EF%BC%8C%E6%8E%A5%E4%B8%8B%E6%9D%A5%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85%EF%BC%9F"><span class="toc-number">1.4.9.</span> <span class="toc-text">输入一串网址，接下来会发生什么事情？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8D%8F%E8%AE%AE%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%98%AF%EF%BC%9F"><span class="toc-number">1.4.10.</span> <span class="toc-text">常用的协议有哪些，端口号是？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%AF%E7%94%B1%E5%AF%BB%E5%9D%80%EF%BC%9F"><span class="toc-number">1.4.11.</span> <span class="toc-text">什么是路由寻址？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">1.5.</span> <span class="toc-text">Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9A%84%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-number">1.5.1.</span> <span class="toc-text">Linux的目录结构有哪些？分别有什么作用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linux%E6%80%8E%E4%B9%88%E6%9D%80%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.5.2.</span> <span class="toc-text">linux怎么杀进程?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E6%80%8E%E4%B9%88%E6%9F%A5%E6%97%A5%E5%BF%97"><span class="toc-number">1.5.3.</span> <span class="toc-text">Linux怎么查日志?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E6%80%8E%E4%B9%88%E8%A7%A3%E5%8E%8B%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.4.</span> <span class="toc-text">Linux怎么解压压缩文件?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E6%80%8E%E4%B9%88%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">1.5.5.</span> <span class="toc-text">Linux怎么修改文件权限?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.6.</span> <span class="toc-text">如何查找文件</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/20/%E7%B2%BE%E7%9B%8A%E7%9F%A5%E8%AF%86/" title="精益知识点">精益知识点</a><time datetime="2024-11-20T13:37:56.047Z" title="发表于 2024-11-20 21:37:56">2024-11-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/20/English/" title="英语">英语</a><time datetime="2024-11-20T13:37:56.046Z" title="发表于 2024-11-20 21:37:56">2024-11-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/20/Hexo%20+%20Github%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" title="Hexo + Github 搭建个人博客网站">Hexo + Github 搭建个人博客网站</a><time datetime="2024-11-20T13:37:56.046Z" title="发表于 2024-11-20 21:37:56">2024-11-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/20/git/" title="Git">Git</a><time datetime="2024-11-20T13:37:56.046Z" title="发表于 2024-11-20 21:37:56">2024-11-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/20/snaps/" title="Snap">Snap</a><time datetime="2024-11-20T13:37:56.046Z" title="发表于 2024-11-20 21:37:56">2024-11-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By 平安是福</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-message"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.2.2"></script><script src="/js/main.js?v=5.2.2"></script><script src="/js/tw_cn.js?v=5.2.2"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = false
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = { startHidden: true }
+  
+    window.chatBtnFn = () => {
+      document.getElementById('chatra').classList.contains('chatra--expanded') ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => Chatra('hide'),
+      show: () => Chatra('show')
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = ''
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+      (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
